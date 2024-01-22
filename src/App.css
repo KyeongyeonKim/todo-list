@@ -1,15 +1,67 @@
+.content-style {
+  max-width: 1200px;
+  min-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fbf9f1;
+  background-color: #aad7d9;
+}
+.input {
+  padding: 25px;
+  background-color: #e5e1da;
+}
+.input > input {
+  margin-right: 25px;
+  border-radius: 5px;
+  border: none;
+  height: 25px;
+  width: 200px;
+}
+.input > button {
+  background-color: #92c7cf;
+  border-radius: 5px;
+  border: 2px solid #fbf9f1;
+  height: 30px;
+  width: 100px;
+  color: #fbf9f1;
+}
+.title {
+  padding: 15px;
+  font-weight: bold;
+  font-size: 25px;
+}
 .app-style {
-  padding: 100px;
+  padding: 40px;
   display: flex;
   gap: 12px;
 }
-
 .component-style {
-  width: 300px;
-  height: 300px;
-  border: 1px solid green;
+  width: 250px;
+  height: auto;
+  border: 5px solid #92c7cf;
   border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 10px;
+}
+
+.list-title {
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px;
+}
+.list-content {
+  padding: 10px;
+}
+.component-style > button {
+  background-color: #92c7cf;
+  border-radius: 5px;
+  border: 2px solid #0d4c92;
+  height: 30px;
+  width: 100px;
+  color: #fbf9f1;
+  margin: 10px;
 }

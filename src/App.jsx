@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css";
+import "App.css";
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -20,7 +20,7 @@ function App() {
   ]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [isDone, setIsDone] = useState("false");
+  const [isDone, setIsDone] = useState(false);
 
   const titleHandler = (event) => {
     setTitle(event.target.value);
@@ -51,44 +51,77 @@ function App() {
 
   // 완료/취소 버튼
   // 버튼을 누르면 isdone의 값을 바꿔준다.
-  // const onChangeHandler =(id)=>{
+  // 새로 출력
 
-  // }
+  // const onChangeHandler = (id, isDone) => {
+  //   if (isDone === false) {
+  //     // 완료버튼 눌렀을때
+  //     setIsDone(true); // 완료로 바꿔줌
+  //     // working에서는 빼고 출력,
+  //     const newList = todoList.filter((list) => list.id !== id);
+  //     setTodoList(newList);
+
+  //     //done에서는 추가해서 출력
+  //     const newDoneList = {
+  //       id: doneList.length + 1,
+  //       title: todoList.title,
+  //       content: todoList.content,
+  //       isDone,
+  //     };
+  //     setDoneList([...doneList, newDoneList]);
+  //   } else {
+  //     // 취소버튼 눌렀을때 :  done에서 빼고 출력, working에 더해서 출력
+  //     setIsDone(false);
+  //     const newList = doneList.filter((list) => list.id !== id);
+  //     setDoneList(newList);
+
+  //     const redoList = {
+  //       id: todoList.length + 1,
+  //       title: todoList.title,
+  //       content: todoList.content,
+  //       isDone,
+  //     };
+  //     setTodoList([...todoList, redoList]);
+  //   }
+  // };
 
   return (
-    <div>
-      <div>My Todo List</div>
-      <div>
+    <div className="content-style">
+      <div className="header">My Todo List</div>
+      <div className="input">
         제목 <input type="text" value={title} onChange={titleHandler} />
         내용 <input type="text" value={content} onChange={contentHandler} />
+        <button onClick={addBtnHandler}>추가하기</button>
       </div>
-      <button onClick={addBtnHandler}>추가하기</button>
-      <div>Working...</div>
+
+      <div className="title">Working...🔥</div>
       <div className="app-style">
         {todoList.map((list) => {
           return (
             <div key={list.id} className="component-style">
-              <div>{list.title}</div>
-              <div>{list.content}</div>
+              <div className="list-title">{list.title}</div>
+              <div className="list-content">{list.content}</div>
               <button onClick={() => deleteBtnHandler(list.id, list.isDone)}>
                 삭제하기
               </button>
+              {/* <button onClick={() => onChangeHandler(list.id, list.isDone)}> */}
               <button>완료</button>
             </div>
           );
         })}
       </div>
 
-      <div>Done...!</div>
+      <div className="title">Done...!🎉</div>
       <div className="app-style">
         {doneList.map((list) => {
           return (
             <div key={list.id} className="component-style">
-              <div>{list.title}</div>
-              <div>{list.content}</div>
+              <div className="list-title">{list.title}</div>
+              <div className="list-content">{list.content}</div>
               <button onClick={() => deleteBtnHandler(list.id, list.isDone)}>
                 삭제하기
               </button>
+              {/* <button onClick={() => onChangeHandler(list.id, list.isDone)}> */}
               <button>취소</button>
             </div>
           );
