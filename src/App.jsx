@@ -1,6 +1,9 @@
 import { useState } from "react";
 import "App.css";
 import uuid from "react-uuid";
+import Header from "components/Header";
+import Input from "components/Input";
+import Todo from "components/Todo";
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -54,50 +57,45 @@ function App() {
 
   return (
     <div className="content-style">
-      <div className="header">My Todo List</div>
-      <form className="input">
-        제목 <input type="text" value={title} onChange={titleHandler} />
-        내용 <input type="text" value={content} onChange={contentHandler} />
-        <button type="submit" onClick={addBtnHandler}>
-          추가하기
-        </button>
-      </form>
+      <Header>
+        <Input
+          title={title}
+          content={content}
+          titleHandler={titleHandler}
+          contentHandler={contentHandler}
+          addBtnHandler={addBtnHandler}
+        />
 
-      <div className="title">Working...🔥</div>
-      <div className="app-style">
-        {todoList
-          .filter((todo) => todo.isDone === false)
-          .map((list) => {
-            return (
-              <div key={list.id} className="component-style">
-                <div className="list-title">{list.title}</div>
-                <div className="list-content">{list.content}</div>
-                <button onClick={() => deleteBtnHandler(list.id)}>
-                  삭제하기
-                </button>
-                <button onClick={() => onChangeHandler(list.id)}>완료</button>
-              </div>
-            );
-          })}
-      </div>
+        <div className="title">Working...🔥</div>
+        <div className="app-style">
+          {todoList
+            .filter((todo) => todo.isDone === false)
+            .map((list) => {
+              return (
+                <Todo
+                  list={list}
+                  deleteBtnHandler={deleteBtnHandler}
+                  onChangeHandler={onChangeHandler}
+                />
+              );
+            })}
+        </div>
 
-      <div className="title">Done...!🎉</div>
-      <div className="app-style">
-        {todoList
-          .filter((todo) => todo.isDone === true)
-          .map((list) => {
-            return (
-              <div key={list.id} className="component-style">
-                <div className="list-title">{list.title}</div>
-                <div className="list-content">{list.content}</div>
-                <button onClick={() => deleteBtnHandler(list.id)}>
-                  삭제하기
-                </button>
-                <button onClick={() => onChangeHandler(list.id)}>취소</button>
-              </div>
-            );
-          })}
-      </div>
+        <div className="title">Done...!🎉</div>
+        <div className="app-style">
+          {todoList
+            .filter((todo) => todo.isDone === true)
+            .map((list) => {
+              return (
+                <Todo
+                  list={list}
+                  deleteBtnHandler={deleteBtnHandler}
+                  onChangeHandler={onChangeHandler}
+                />
+              );
+            })}
+        </div>
+      </Header>
     </div>
   );
 }
